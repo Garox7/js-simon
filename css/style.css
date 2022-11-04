@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightpink;
+}
+
+.memo-number {
+    background-color: lightskyblue;
+    min-height: 250px;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 4px 4px 0 0 black;
+}
+
+.memo-number h1 {
+    font-size: 18px;
+}
+
+.memo-number__random {
+    display: flex;
+    gap: 1rem;
+    height: 4em;
+    border-radius: 10px;
+    background-color: lightcyan;
+}
+
+.random-num {
+    height: 60px;
+    width: 60px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
