@@ -42,6 +42,10 @@ body {
     background-color: lightcyan;
 }
 
+.memo-number__random.hidden {
+    display: none;
+}
+
 .random-num {
     height: 60px;
     width: 60px;
