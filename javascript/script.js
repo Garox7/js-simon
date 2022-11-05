@@ -20,7 +20,7 @@
             - inseriamo la funzione isEqual che confronta i numeri immessi dall'utente con quelli random
             e li inserisce dentro un'array per ricavarne il punteggio
 */
-
+const numberText = document.querySelector('h1');
 const numberDisplay = document.querySelector('.memo-number__random');
 
 //funzione che serve a generare 5 numeri random 
@@ -37,7 +37,7 @@ function randomNum(num) {
 function userCollect(num) {
     const numUserArray = [];
     for (let i = 0; i < num; i++) {
-        numUser = parseInt(prompt('Inserisci il primo numero'));
+        numUser = parseInt(prompt('Inserisci i numeri in ordine'));
         console.log(numUser); //DEBUG
         numUserArray.push(numUser);
     }
@@ -45,32 +45,49 @@ function userCollect(num) {
 }
 
 //funzione di confronto tra numeri random e numeri immessi dall'untente restituisce la lunghezza dell'array che rapresenta il punteggio
-const numGuess = []; //Array di raccolta numeri indovinati (nonchè punteggio)
-function isEqual(userArray, randomArray) { 
+const numGuessArray = []; //Array di raccolta numeri indovinati (nonchè punteggio)
+function isEqual(userArray, randomArray) {
+
+    const scoreElement = document.querySelector('.score'); //seleziono div.score
+    scoreElement.classList.remove('hidden'); //rimuovo .hidden
+    const containerGuess = document.querySelector('.score__guess');
+    const numGuess = document.querySelector('.num__guess');
+    const containerWrong = document.querySelector('.score__wrong');
+    const numWrong = document.querySelector('.num__wrong');
 
     for (let i = 0; i < randomArray.length ; i++) {
         if (randomArray[i] === userArray[i]) {
-            numGuess.push(userArray[i]);
-            console.log('Indovinati', numGuess);
+            numGuessArray.push(userArray[i]);
+            numGuess.innerHTML = `<div class="score__guess__number">${numGuessArray[i]}</div>`;
+
+            console.log('Indovinati', numGuessArray); //DEBUG
 
         } else if (randomArray[i] !== userArray[i]) {
-            let numWrong = randomArray[i];
-            console.log('Sbagliati', numWrong);
+            let numWrongArray = randomArray[i];
+            numWrong.innerHTML += `<div class="score__wrong__number">${randomArray[i]}</div>`;
+
+            console.log('Sbagliati', numWrongArray); //DEBUG
+
         }
     }
-    return numGuess.length;
 
+    const finalScore = document.createElement('div');
+    finalScore.innerHTML = `<div class="final__score">Il tuo punteggio finale è: <span class="number__score">${numGuessArray.length}</span></div>`;
+    scoreElement.append(finalScore);
+    console.log('il tuo punteggio è:', numGuessArray.length); //DEBUG
+
+    return numGuessArray;
 }
 
 //Funzione che nasconde i numeri e avvia i prompt raccogliendo i dati in un array
 function timeToHide(){
     numberDisplay.classList.add('hidden');
+    numberText.innerHTML = 'Risultato';
 
     numberUserCollect = userCollect(5);
-    console.log('Numeri indovinati:',numberUserCollect); //DEBUG
+    console.log('Numeri inseriti',numberUserCollect); //DEBUG
 
     isEqual(numberUserCollect, numberGenerate);
-    console.log('il tuo punteggio è:', numGuess.length);
 }
 
 numberGenerate = randomNum(5); //array di numeri random generati
