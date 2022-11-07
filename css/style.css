@@ -94,7 +94,7 @@ p {color: var(--text-p-color);}
     gap: 2rem;
 }
 
-.memo-number h1 {
+.memo-number__title {
     color: var(--text-h-color);
     text-align: center;
 }
