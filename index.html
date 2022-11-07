@@ -11,7 +11,13 @@
 <body>
     
     <section class="container">
-        <div class="memo-number">
+        <div class="game__guide">
+            <h1>Benvenuto su Simon Says!</h1>
+            <p>Questo è un test di memoria. <br>Quando sei pronto clicca sul bottone play per iniziare a testare la tua memoria. Avrai un numero di tempo limitato per memorizzare i numeri e successivamente dovrai scriverli in ordine. <br> Are you ready?</p>
+            <button class="play-btn">Play</button>
+        </div>
+
+        <div class="memo-number hidden">
             <h1>Hai 30 secondi per memortizzare i seguenti numeri</h1>
             <div class="memo-number__random"></div>
 
@@ -20,12 +26,13 @@
                     <p>Numeri indovinati</p>
                     <div class="num__guess"></div>
                 </div>
-                <div class="score__wrong">
+
+                <!-- <div class="score__wrong">
                     <p>Numeri sbagliati</p>
                     <div class="num__wrong"></div>
-                </div>
+                </div> -->
+                
             </div>
-
         </div>
     </section>
 
