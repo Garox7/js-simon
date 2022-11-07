@@ -1,3 +1,21 @@
+/*  GENERAL SETTING */
+:root {
+    /* general color */
+    --bg-color: #1c1a32;
+    --bg-card-color: #0a0a23;
+    --bg-text-color: #3b3c4f;
+    --text-h-color:  #f5f6f7;
+    --text-p-color: #d0d0d5;
+
+    /* button color */
+    --color-text-btn: #0a0a23;
+    --bg-btn: #feac32;
+    --bg-h-btn: #fecc4c;
+    --bg-gradient-btn: linear-gradient(#fecc4c,#ffac33);
+    --border-color-btn: #feac32;
+    --border-h-color-btn: #f1a02a; 
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,25 +28,66 @@ html {
 
 body {
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightpink;
+    width: 100vw;
 }
 
-.container {
-    background-color: lightskyblue;
-    min-height: 250px;
-    width: 500px;
+p {color: var(--text-p-color);}
+
+/*  GAME GUIDE SETTING */
+.game__guide {
+    background-color: var(--bg-card-color);
+    color: var(--text-h-color);
+    max-width: 600px;
+    max-height: 400px;
     padding: 2rem;
-    border-radius: 30px;
+    border-radius: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 2rem;
+}
+
+.game__guide p {
+    color: var(--text-p-color);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.play-btn {
+    background-color: var(--bg-btn);
+    background-image: var(--bg-gradient-btn);
+    color: var(--color-text-btn);
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+    border: 3px solid var(--border-color-btn);
+    border-radius: 3px;
+    transition: all .15s linear;
+}
+
+.play-btn:active, .play-btn:focus, .play-btn:hover {
+    background-color: var(--bg-h-btn);
+    background-image: none;
+    border: 3px solid var(--border-h-color-btn);
+}
+
+/*  CARD SETTING */
+.container {
+    background-color: var(--bg-color);
+    height: 100%;
+    width: 100%;
+    display: flex;
     justify-content: center;
-    box-shadow: 4px 4px 0 0 black;
+    align-items: center;
 }
 
 .memo-number {
+    background-color: var(--bg-card-color);
+    color: var(--text-p-color);
+    max-width: 600px;
+    max-height: 400px;
+    padding: 2rem;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,28 +95,32 @@ body {
 }
 
 .memo-number h1 {
+    color: var(--text-h-color);
     text-align: center;
-    font-size: 18px;
 }
 
 .memo-number__random {
+    background-color: var(--bg-text-color);
+    padding: 0 1rem;
+    height: 4em;
+    border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     gap: 1rem;
-    height: 4em;
-    border-radius: 10px;
-    background-color: lightcyan;
 }
 
 .random-num {
-    height: 60px;
-    width: 60px;
-    font-size: 28px;
+    color: var(--text-p-color);
+    font-size: 26px;
+    height: 3rem;
+    width: 3rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
+/*  FINAL SCORE SETTING */
 .score {
     width: 100%;
     display: flex;
@@ -66,29 +129,25 @@ body {
     gap: 1rem;
 }
 
-.score__guess, .score__wrong {
+.score__guess {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    margin-bottom: 1.5rem;
 }
-
-.score__guess p, .score__wrong p {
-    font-size: 20px;
-}
-
-.num__guess , .num__wrong {
-    background-color: lightcyan;
-    padding: 0 .5rem;
-    border-radius: 10px;
+.num__guess {
+    background-color: var(--bg-text-color);
+    padding: 0 1rem;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
 }
 
-.score__guess__number , .score__wrong__number {
+.score__guess__number {
     font-size: 26px;
     width: 40px;
     height: 40px;
@@ -100,10 +159,6 @@ body {
 .final__score {
     font-size: 20px;
     text-transform: uppercase;
-}
-
-.number__score {
-    font-size: 22px;
 }
 
 .hidden {
