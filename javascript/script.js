@@ -23,7 +23,7 @@
 
 const gameGuide = document.querySelector('.game__guide');
 const playButton = document.querySelector('.play-btn');
-const numberText = document.querySelector('h1');
+const numberText = document.querySelector('.memo-number__title');
 const container = document.querySelector('.memo-number');
 const numberContainer = document.querySelector('.memo-number__random');
 
@@ -49,12 +49,13 @@ function userCollect(num) {
 }
 
 //funzione di confronto tra numeri random e numeri immessi dall'untente restituisce la lunghezza dell'array che rapresenta il punteggio
-const numGuessArray = []; //Array di raccolta numeri indovinati (nonchè punteggio)
 function isEqual(userArray, randomArray) {
+    numberText.innerHTML = 'Risultato';
     const scoreElement = document.querySelector('.score');
     scoreElement.classList.remove('hidden');
     const numGuess = document.querySelector('.num__guess');
-
+    
+    const numGuessArray = []; //Array di raccolta numeri indovinati (nonchè punteggio)
     for (let i = 0; i < randomArray.length ; i++) {
         if (randomArray[i] === userArray[i]) {
             numGuessArray.push(userArray[i]);
@@ -78,11 +79,13 @@ function isEqual(userArray, randomArray) {
     return numGuessArray;
 }
 
-//Funzione che nasconde i numeri e avvia i prompt raccogliendo i dati in un array
+//Funzione che nasconde i numeri
 function timeToHide() {
     numberContainer.classList.add('hidden');
-    numberText.innerHTML = 'Risultato';
+}
 
+// funzione che avvia i prompt raccogliendo i dati in un array (per risolvere un bug che non permetteve di nascondere i numeri prima che il prompt appariva)
+function askNumbers() {
     numberUserCollect = userCollect(5);
     console.log('Numeri inseriti',numberUserCollect); //DEBUG
 
@@ -104,5 +107,7 @@ playButton.addEventListener('click', function() {
         numberContainer.append(numElement)
     }
     
-    setTimeout(timeToHide, 3000); // Avvio della funzione dopo ** secondi.
+    setTimeout(timeToHide, 5 * 1000); // Avvio della funzione dopo ** secondi.
+    setTimeout(askNumbers, 5 * 1000 + 100)
+
 })
